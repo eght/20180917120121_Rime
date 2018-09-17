@@ -1,0 +1,121 @@
+﻿# Rime schema
+# encoding: utf-8
+
+schema:
+  name: "4角号码-全数字小键盘"
+  schema_id: 5
+  version: 0.1
+  author:
+    - "發明人 王雲五"
+  dependencies:
+    - luna_pinyin
+  description: |
+    碼表自瑾昀得，雪齋整理製作
+    以「qwertyuiop」卽第一排字母表示四角號碼「1234567890」
+    以「1234567890」卽全小键盘数字表示四角號碼「1234567890」
+    顯示字的Unicode編碼，格式爲〖U+xxxx〗
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states:
+      - "中文"
+      - "西文"
+  - name: full_shape
+    reset: 1
+    states:
+      - "半角"
+      - "全角"
+ 
+engine:
+  filters:
+    - simplifier
+    - uniquifier
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+
+speller:
+  alphabet: "1234567890"
+  delimiter: " ' "
+
+recognizer:
+  import_preset: default
+  patterns:
+    email: "^[a-z][-_.0-9a-z]*@.*$"
+    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    reverse_lookup: "`[a-z]*'?$"
+
+# 不須「U+」提示者，刪去以下兩項「#」符號卽可
+
+translator:
+  comment_format:
+    - xform/~?;([0-9A-F]+)$/〖U+$1〗/
+    - "xlit|1234567890~|1234567890〜|"
+#    - xform/U\+//
+  dictionary: 5
+  enable_charset_filter: false
+  preedit_format:
+    - "xlit|1234567890|1234567890|"
+  spelling_hint: 20
+ 
+reverse_lookup:
+  comment_format:
+    - xform/;([0-9A-F]+)$/〖U+$1〗/
+    - "xlit|1234567890|1234567890|"
+#    - xform/U\+//
+  dictionary: luna_pinyin
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+  prefix: "`"
+  suffix: "'"
+  tips: "【拼音】"
+ 
+key_binder:
+  import_preset: default
+  bindings:
+    - {accept: KP_0, send: 0, when: always}
+    - {accept: KP_1, send: 1, when: always}
+    - {accept: KP_2, send: 2, when: always}
+    - {accept: KP_3, send: 3, when: always}
+    - {accept: KP_4, send: 4, when: always}
+    - {accept: KP_5, send: 5, when: always}
+    - {accept: KP_6, send: 6, when: always}
+    - {accept: KP_7, send: 7, when: always}
+    - {accept: KP_8, send: 8, when: always}
+    - {accept: KP_9, send: 9, when: always}
+    - {when: composing, accept: Return, send: Escape} #回车清空编码
+#    - { when: has_menu, accept: semicolon,  send: 2 }
+#    - { when: has_menu, accept: apostrophe, send: 3 }
+#    - { when: has_menu, accept: equal, send: Page_Down }
+#    - { when: has_menu, accept: minus, send: Page_Up }
+
+punctuator:
+  import_preset: default
+
+menu:
+  page_size: 9
+## 设置候选项数
+
+style:
+  horizontal: false
+## 竖排false，横排true

@@ -1,0 +1,28 @@
+﻿# encoding: utf-8
+# 四角號碼檢字法
+# 碼表自瑾昀得，由雪齋整理
+# 字集GB18030-2000，收27585字
+#
+#name: "four_corner_method"
+#全小数字键盘输入码
+#四角号码输入法
+name: "5"
+version: "0.1"
+sort: original
+use_preset_vocabulary: true
+#max_phrase_length: 1
+import_tables:
+  - 5.class-0   # 说明和单字编码 27,637
+#  - 5.class-1   # 五笔一级简码
+#  - 5.class-2   # 五笔二级简码
+#  - 5.class-3   # 五笔三级简码
+  - 5.class-4   # 两字词组 159,783
+  - 5.class-5   # 四字词组 139,863
+  - 5.class-6   # 五字词组 38,597
+  - 5.class-7   # 三字词组 120,716
+  - 5.class-8   # 七字词组 3,764
+  - 5.class-9   # 六字词组 23,355 个
+  - 5.class-10  # 八字词组   7,812个
+  - 5.extended  # 测试用, 小于10行
+...
+

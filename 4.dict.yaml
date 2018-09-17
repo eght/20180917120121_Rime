@@ -1,0 +1,15 @@
+﻿# encoding: utf-8
+# 四角號碼檢字法
+# 碼表自瑾昀得，由雪齋整理
+# 字集GB18030-2000，收27585字
+
+---
+name: "4"
+version: "0.1"
+sort: original
+use_preset_vocabulary: true
+max_phrase_length: 1
+...
+
+㐀	11102;3400
+㐁	10604;3401

@@ -1,0 +1,16 @@
+﻿四角号码检字法原始出处：https://bintray.com/rime-aca/Schemata
+
+Owned by Rime翰林院
+
+Schemata for Rime 
+中州韻輸入引擎方案集
+schema  方案
+
+4corner
+Four Corner Method 四角號碼檢字法
+
+#############
+gvim确实是相当迅捷的编辑工具，可主要用于编程；
+emacs能够显示较多汉字，可用来学习祖国语言文字，记笔记、读古籍。
+
+留名，求指导。 lvqy@sina.com.cn
